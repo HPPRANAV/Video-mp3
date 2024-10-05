@@ -1,7 +1,6 @@
 import pika, json 
 
 
-
 def upload(f, fs, channel, access):
     try:
         fid = fs.put(f)
@@ -25,6 +24,6 @@ def upload(f, fs, channel, access):
             ),
         )
 
-    except:
-        fs.delete(f)
+    except Exception as err:
+        fs.delete(fid)
         return "Internal server error", 500
